@@ -19,3 +19,27 @@ body{
     border: 5px solid rgb(255, 0, 0);
  
 }
+
+#cell1,
+#cell2,
+#cell3{
+    border-top: none;
+}
+
+#cell1,
+#cell4,
+#cell7{
+    border-left: none;
+}
+
+#cell3,
+#cell6,
+#cell9{
+    border-right:none;
+}
+
+#cell7,
+#cell8,
+#cell9{
+    border-bottom: none;
+}
