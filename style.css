@@ -1,3 +1,14 @@
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+
+:root{
+    --cell-size:100px;
+    --mark-size: calc(var(--cell-size)* .9)
+}
+
+
 body{
     margin: 0;
 
@@ -10,15 +21,97 @@ body{
     justify-content: center;
     align-content: center;
     grid-template-columns: repeat(3,auto);
-    background-color: black;
+    justify-items: center;
+    align-items: center;
+    
 }
 
 .gamecell{
     width: 100px;
     height: 100px;
-    border: 5px solid rgb(255, 0, 0);
+    border: 2px solid rgb(255, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
  
 }
+
+
+
+.gamecell.x,
+.gamecell.circle{
+    cursor: not-allowed;
+}
+
+.gamecell.x::before,
+.gamecell.x::after{
+    background-color: black;
+}
+
+.gamecell.circle::before{
+background-color: black;
+}
+
+.gamecell.circle::after{
+background-color: white;
+}
+
+.gameboard.x .gamecell:not(.x):not(.circle):hover::before,
+.gameboard.x .gamecell:not(.x):not(.circle):hover::after,
+.gameboard.circle .gamecell:not(.x):not(.circle):hover::before{
+    background-color: lightgrey;
+}
+
+
+.gamecell.x::before,
+.gamecell.x::after,
+.gameboard.x .gamecell:not(.x):not(.circle):hover::before,
+.gameboard.x .gamecell:not(.x):not(.circle):hover::after {
+    content: ''; /*so before and after elements render */
+    position:absolute; /* makes lines of x overlap at center */
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+
+}
+
+.gamecell.x:before,
+.gameboard.x .gamecell:not(.x):not(.circle):hover::before{
+    transform: rotate(45deg)
+}
+
+.gamecell.x::after,
+.gameboard.x .gamecell:not(.x):not(.circle):hover::after{
+    transform: rotate(-45deg)
+}
+
+
+.gamecell.circle::before, 
+.gamecell.circle::after,
+.gameboard.circle .gamecell:not(.x):not(.circle):hover::before,
+.gameboard.circle .gamecell:not(.x):not(.circle):hover::after{
+    content: ''; /*so before and after elements render */
+    position:absolute; 
+   border-radius: 50%;
+
+}
+
+.gamecell.circle::before,
+.gameboard.circle .gamecell:not(.x):not(.circle):hover::before{
+    width: var(--mark-size);
+    height: var(--mark-size);
+    
+}
+
+.gamecell.circle::after,
+.gameboard.circle .gamecell:not(.x):not(.circle):hover::after{
+    width: calc(var(--mark-size)* .7);
+    height: calc(var(--mark-size)*.7);
+    background-color: white;
+}
+
+
 
 #cell1,
 #cell2,
@@ -42,4 +135,40 @@ body{
 #cell8,
 #cell9{
     border-bottom: none;
+}
+
+
+.popup{
+    display:none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:rgba(0 ,0 ,0 , .9);
+    
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    flex-direction: column;
+    
+}
+
+#playagain{
+    border: 1px solid black;
+    font-size: 3rem;
+    background-color: white;
+    padding: .25em .5em;
+    cursor:pointer;
+}
+
+#playagain:hover{
+    background-color: red;
+    color: white;
+
+}
+
+#playagain.show{
+    display: flex;
 }
