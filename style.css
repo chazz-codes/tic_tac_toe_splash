@@ -1,202 +1,23 @@
-@import url("https://use.typekit.net/sia7taz.css");
-
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body{
-    background: red;
-    font-family: arpona, san-serif;
-}
-
-.select-box, .board, .results{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-}
-
-
-.select-box{
-    background: white;
-    padding: 20px 25px 25px;
-    border-radius: 5px;
-    max-width: 330px;
-    width: 100%;
-    /* display: none; */
-    transition: all 0.3s ease;
-}
-
-.select-box.hide{
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%, -50%) scale(0.9);
-    
-}
-
-.select-box header{
-    font-size: 23px;
-    font-weight: 600;
-    padding-bottom: 10px;
-    border-bottom: 1px solid goldenrod;
-}
-
-.select-box .title{
-    font-size: 18px;
-    font-weight: 500;
-    margin: 20px;
-}
-
-.select-box .options{
+.grid{
     display: flex;
-    width: 100%;
-
-}
-
-.options button{
-    width: 100%;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 8px 0;
-    border: none;
-    outline: none;
-    background: red;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.options button:hover,
-.results .btn button:hover{
-    transform: scale(0.96);
-}
-
-.options button.playerX{
-    margin-right: 5px;
-}
-
-.options button.playerO{
-    margin-left: 5px;
-}
-
-.board{
-    display:none;
-}
-
-.board .details .players{
-    display: flex;
-    width: 100%;
-    position: relative;
-
+    flex-wrap: wrap;
     justify-content: space-between;
+    width: 610px;
+    height: 610px;
+    background-color: black;
 }
 
-.board .details span{
-    width: 100%;
-    border-radius: 5px;
-    padding: 7px 0;
-    font-size: 19px;
-    font-weight: 500;
-    cursor: default;
-    text-align: center;
-    color: red;
-    position: relative;
-    z-index: 5;
+div {
+    width: 200px;
+    height: 200px;
+    background-color:white;
+    margin-bottom: 5px;
 }
 
-.details span:first-child{
-    color: white;
+.playerX {
+background-image: url(images/Xicon.png);
 }
 
-.details span.active{
-    color: white;
-
-}
-
-.details .slider{
-    background: red;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 50%;
-    border-radius: 5px;
-    z-index: 2;
-}
-
-.board .details,
-.board .play-area{
-    margin-top: 20px;
-}
-
-.board .details{
-    background: white; 
-    padding: 7px;
-    border-radius: 5px;
-}
-
-
-
-.board section{
-    display: flex;
-}
-
-.board section div{
-    display: block;
-    margin: 2px;
-    height: 80px;
-    width: 80px;
-    background: white;
-    border-radius: 5px;
-    font-size: 40px;
-    text-align: center;
-    line-height: 80px;
-    color: red;
-}
-
-.results{
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    max-width: 350px;
-    width: 100%;
-    display: none;
-
-}
-
-.results .won-text{
-    font-size: 25px;
-    font-weight: 500;
-    display: flex;
-    justify-content: center;
-}
-
-.results .won-text p{
-    font-weight: 700;
-    margin: 0 3px;
-}
-
-.results .btn{
-    display: flex;
-    margin-top: 20px;
-    justify-content: center; 
-}
-
-.results .btn button{
-    font-size: 18px;
-    font-weight: 500;
-    padding: 8px 20px;
-    border: none;
-    outline: none;
-    background: red;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+.playerO{
+background-image: url(images/Oicon.png);
 }
