@@ -1,174 +1,202 @@
-*, *::after, *::before{
+@import url("https://use.typekit.net/sia7taz.css");
+
+
+*{
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-
-:root{
-    --cell-size:100px;
-    --mark-size: calc(var(--cell-size)* .9)
-}
-
-
 body{
-    margin: 0;
-
+    background: red;
+    font-family: arpona, san-serif;
 }
 
-.gameboard{
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    grid-template-columns: repeat(3,auto);
-    justify-items: center;
-    align-items: center;
+.select-box, .board, .results{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     
 }
 
-.gamecell{
-    width: 100px;
-    height: 100px;
-    border: 2px solid rgb(255, 0, 0);
+
+.select-box{
+    background: white;
+    padding: 20px 25px 25px;
+    border-radius: 5px;
+    max-width: 330px;
+    width: 100%;
+    /* display: none; */
+    transition: all 0.3s ease;
+}
+
+.select-box.hide{
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9);
+    
+}
+
+.select-box header{
+    font-size: 23px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px solid goldenrod;
+}
+
+.select-box .title{
+    font-size: 18px;
+    font-weight: 500;
+    margin: 20px;
+}
+
+.select-box .options{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    width: 100%;
+
+}
+
+.options button{
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 0;
+    border: none;
+    outline: none;
+    background: red;
+    border-radius: 5px;
+    color: white;
     cursor: pointer;
- 
+    transition: all 0.3s ease;
 }
 
-
-
-.gamecell.x,
-.gamecell.circle{
-    cursor: not-allowed;
+.options button:hover,
+.results .btn button:hover{
+    transform: scale(0.96);
 }
 
-.gamecell.x::before,
-.gamecell.x::after{
-    background-color: black;
+.options button.playerX{
+    margin-right: 5px;
 }
 
-.gamecell.circle::before{
-background-color: black;
+.options button.playerO{
+    margin-left: 5px;
 }
 
-.gamecell.circle::after{
-background-color: white;
-}
-
-.gameboard.x .gamecell:not(.x):not(.circle):hover::before,
-.gameboard.x .gamecell:not(.x):not(.circle):hover::after,
-.gameboard.circle .gamecell:not(.x):not(.circle):hover::before{
-    background-color: lightgrey;
-}
-
-
-.gamecell.x::before,
-.gamecell.x::after,
-.gameboard.x .gamecell:not(.x):not(.circle):hover::before,
-.gameboard.x .gamecell:not(.x):not(.circle):hover::after {
-    content: ''; /*so before and after elements render */
-    position:absolute; /* makes lines of x overlap at center */
-    width: calc(var(--mark-size) * .15);
-    height: var(--mark-size);
-
-}
-
-.gamecell.x:before,
-.gameboard.x .gamecell:not(.x):not(.circle):hover::before{
-    transform: rotate(45deg)
-}
-
-.gamecell.x::after,
-.gameboard.x .gamecell:not(.x):not(.circle):hover::after{
-    transform: rotate(-45deg)
-}
-
-
-.gamecell.circle::before, 
-.gamecell.circle::after,
-.gameboard.circle .gamecell:not(.x):not(.circle):hover::before,
-.gameboard.circle .gamecell:not(.x):not(.circle):hover::after{
-    content: ''; /*so before and after elements render */
-    position:absolute; 
-   border-radius: 50%;
-
-}
-
-.gamecell.circle::before,
-.gameboard.circle .gamecell:not(.x):not(.circle):hover::before{
-    width: var(--mark-size);
-    height: var(--mark-size);
-    
-}
-
-.gamecell.circle::after,
-.gameboard.circle .gamecell:not(.x):not(.circle):hover::after{
-    width: calc(var(--mark-size)* .7);
-    height: calc(var(--mark-size)*.7);
-    background-color: white;
-}
-
-
-
-#cell1,
-#cell2,
-#cell3{
-    border-top: none;
-}
-
-#cell1,
-#cell4,
-#cell7{
-    border-left: none;
-}
-
-#cell3,
-#cell6,
-#cell9{
-    border-right:none;
-}
-
-#cell7,
-#cell8,
-#cell9{
-    border-bottom: none;
-}
-
-
-.popup{
+.board{
     display:none;
-    position: fixed;
+}
+
+.board .details .players{
+    display: flex;
+    width: 100%;
+    position: relative;
+
+    justify-content: space-between;
+}
+
+.board .details span{
+    width: 100%;
+    border-radius: 5px;
+    padding: 7px 0;
+    font-size: 19px;
+    font-weight: 500;
+    cursor: default;
+    text-align: center;
+    color: red;
+    position: relative;
+    z-index: 5;
+}
+
+.details span:first-child{
+    color: white;
+}
+
+.details span.active{
+    color: white;
+
+}
+
+.details .slider{
+    background: red;
+    position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-color:rgba(0 ,0 ,0 , .9);
-    
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 5rem;
-    flex-direction: column;
-    
+    height: 100%;
+    width: 50%;
+    border-radius: 5px;
+    z-index: 2;
 }
 
-#playagain{
-    border: 1px solid black;
-    font-size: 3rem;
-    background-color: white;
-    padding: .25em .5em;
-    cursor:pointer;
+.board .details,
+.board .play-area{
+    margin-top: 20px;
 }
 
-#playagain:hover{
-    background-color: red;
-    color: white;
-
+.board .details{
+    background: white; 
+    padding: 7px;
+    border-radius: 5px;
 }
 
-#playagain.show{
+
+
+.board section{
     display: flex;
+}
+
+.board section div{
+    display: block;
+    margin: 2px;
+    height: 80px;
+    width: 80px;
+    background: white;
+    border-radius: 5px;
+    font-size: 40px;
+    text-align: center;
+    line-height: 80px;
+    color: red;
+}
+
+.results{
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 350px;
+    width: 100%;
+    display: none;
+
+}
+
+.results .won-text{
+    font-size: 25px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+}
+
+.results .won-text p{
+    font-weight: 700;
+    margin: 0 3px;
+}
+
+.results .btn{
+    display: flex;
+    margin-top: 20px;
+    justify-content: center; 
+}
+
+.results .btn button{
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 20px;
+    border: none;
+    outline: none;
+    background: red;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 }
