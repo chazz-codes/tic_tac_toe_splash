@@ -1,0 +1,11 @@
+this project was a challenge for me, still looking for ways to 
+get the winning combination to check for win and push the complete message
+
+got most things to work this represents my current understanding of javascript =/ things will
+
+game populates board
+shifts text up top
+highlights on hover
+click spaces one time
+reset game 
+play multiple rounds
