@@ -52,6 +52,7 @@ body{
   font-family: arpona, sans-serif;
   font-size: xx-large;
   border-radius: 5%;
+  color: white;
 }
 
 h3{
@@ -67,7 +68,7 @@ button {
   align-content: center;
   max-width: 200px;
   font-size: larger;
-  border: none none;
+  border: 0 0 ;
   font-family: arpona;
 }
 
