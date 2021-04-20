@@ -15,7 +15,10 @@
     background-color: rgba(231, 231, 231, 0.904)
 }
 
-
+audio{
+  margin-left: 300px;
+  margin-bottom: 100px;
+}
 
 .cell.playerX,
 .cell.playerO {
