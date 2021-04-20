@@ -41,6 +41,30 @@ background-image: url(images/Xicon.png);
 background-image: url(images/Oicon.png);
 }
 
+body{
+  display: grid;
+  align-content: center;
+  justify-content: center;
+}
+
+
+button {
+  background-color: red;
+  color: white; 
+  padding: 20px 10px;
+  border-radius: 5px;
+  justify-content: center;
+  align-content: center;
+  max-width: 100px;
+  font-size: larger;
+}
+
+button:hover {
+  background-color:rgba(255, 0, 0, 0.835);
+  transform: scale(.7);
+  transition: ease-in 0.3s;
+}
+
 
 .winning-msg {
     display: none;
