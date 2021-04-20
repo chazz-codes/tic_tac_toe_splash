@@ -1,3 +1,5 @@
+@import url("https://use.typekit.net/sia7taz.css");
+
 .grid{
     display: flex;
     flex-wrap: wrap;
@@ -5,6 +7,7 @@
     width: 610px;
     height: 610px;
     background-color: black;
+    border-radius: 5px;
 }
 
 .cell:hover{
@@ -45,9 +48,16 @@ body{
   display: grid;
   align-content: center;
   justify-content: center;
+  background-color: red;
+  font-family: arpona, sans-serif;
+  font-size: xx-large;
+  border-radius: 5%;
 }
 
+h3{
+  text-align: center;
 
+}
 button {
   background-color: red;
   color: white; 
@@ -55,12 +65,14 @@ button {
   border-radius: 5px;
   justify-content: center;
   align-content: center;
-  max-width: 100px;
+  max-width: 200px;
   font-size: larger;
+  border: none none;
+  font-family: arpona;
 }
 
 button:hover {
-  background-color:rgba(255, 0, 0, 0.835);
+  background-color:rgba(255, 173, 173, 0.835);
   transform: scale(.7);
   transition: ease-in 0.3s;
 }
